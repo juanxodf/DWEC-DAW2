@@ -62,9 +62,8 @@ Estos ejercicios forman parte de la asignatura **Desarrollo de Aplicaciones en E
 ---
 
 ## 👨‍💻 Autor
-
+📍 Estudiante de **Desarrollo de Aplicaciones Web**
 Juan Caravantes
 
 ---
 
-¿Quieres que además te genere un **README con índice enlazado** (que lleve directamente a cada ejercicio con links en Markdown) o lo dejamos así más sencillo?
