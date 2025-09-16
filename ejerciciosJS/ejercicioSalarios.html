@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Salarios</title>
+</head>
+<body>
+    <h1>Cálculo de Salarios</h1>
+    <div id="resultados"></div>
+
+    <script>
+        // Constantes con las tarifas por hora según turno
+        const TARIFAS = {
+            'm': 15, // mañana
+            't': 17, // tarde
+            'n': 20  // noche
+        };
+
+        // Función para calcular el salario bruto
+        const calcularSalarioBruto = (horas, turno) => {
+            return horas * TARIFAS[turno];
+        };
+
+        // Función para calcular el descuento según el salario bruto
+        const calcularDescuento = (salarioBruto) => {
+            if (salarioBruto < 600) return 0.08;
+            if (salarioBruto <= 1000) return 0.10;
+            return 0.12;
+        };
+
+        // Función para calcular el salario neto
+        const calcularSalarioNeto = (salarioBruto) => {
+            const descuento = calcularDescuento(salarioBruto);
+            return salarioBruto * (1 - descuento);
+        };
+
+        // Función para formatear moneda
+        const formatearMoneda = (cantidad) => {
+            return `${cantidad.toFixed(2)} €`;
+        };
+
+        // Función principal que gestiona el proceso completo
+        const gestionarSalarios = () => {
+            let continuar = true;
+            let totalSalariosNetos = 0;
+            const resultadosDiv = document.getElementById("resultados");
+            resultadosDiv.innerHTML = "";
+
+            while (continuar) {
+                // Solicitar datos al usuario
+                const horas = parseInt(prompt("Introduce el número de horas trabajadas:"));
+                const turno = prompt("Introduce el turno (m: mañana, t: tarde, n: noche):").toLowerCase();
+
+                // Validar datos de entrada
+                if (isNaN(horas) || horas <= 0 || !['m', 't', 'n'].includes(turno)) {
+                    alert("Datos inválidos. Por favor, introduce valores correctos.");
+                    continue;
+                }
+
+                // Calcular salarios
+                const salarioBruto = calcularSalarioBruto(horas, turno);
+                const salarioNeto = calcularSalarioNeto(salarioBruto);
+                totalSalariosNetos += salarioNeto;
+
+                // Mostrar resultado para este trabajador
+                const resultadoTrabajador = document.createElement("p");
+                resultadoTrabajador.textContent = `Salario neto: ${formatearMoneda(salarioNeto)}`;
+                resultadosDiv.appendChild(resultadoTrabajador);
+
+                // Preguntar si desea continuar
+                continuar = confirm("¿Deseas calcular el salario de otro trabajador?");
+            }
+
+            // Mostrar el total de salarios netos
+            const totalElement = document.createElement("h3");
+            totalElement.textContent = `Total de salarios netos abonados: ${formatearMoneda(totalSalariosNetos)}`;
+            resultadosDiv.appendChild(totalElement);
+        };
+
+        // Iniciar la aplicación
+        gestionarSalarios();
+    </script>
+</body>
+</html>

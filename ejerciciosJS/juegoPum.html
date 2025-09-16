@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del PUM</title>
+</head>
+<body>
+    <h1>Juego del PUM</h1>
+    <div id="resultado"></div>
+
+    <script>
+        // Función para determinar si un número es múltiplo de 7 o termina en 7
+        const esPum = (numero) => {
+            return numero % 7 === 0 || numero % 10 === 7;
+        };
+
+        // Función principal que genera la secuencia del juego PUM
+        const generarPum = () => {
+            let resultado = "";
+            
+            for (let i = 1; i <= 100; i++) {
+                if (esPum(i)) {
+                    resultado += "PUM<br>";
+                } else {
+                    resultado += i;
+                    // Agregar coma excepto después del último número
+                    if (i < 100 && !esPum(i + 1)) {
+                        resultado += ", ";
+                    }
+                }
+            }
+            
+            return resultado;
+        };
+
+        // Mostrar el resultado en la página
+        document.getElementById("resultado").innerHTML = generarPum();
+    </script>
+</body>
+</html>
