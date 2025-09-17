@@ -45,36 +45,43 @@
             'm': 15, // mañana
             't': 17, // tarde
             'n': 20  // noche
-        };
+        }
 
         // Función para calcular el salario bruto
         const calcularSalarioBruto = (horas, turno) => {
+            // Devuelve el salario bruto según las horas y el turno
             return horas * TARIFAS[turno];
-        };
+        }
 
         // Función para calcular el descuento según el salario bruto
         const calcularDescuento = (salarioBruto) => {
+            // Devuelve el porcentaje de descuento según el salario bruto
             if (salarioBruto < 600) return 0.08;
             if (salarioBruto <= 1000) return 0.10;
             return 0.12;
-        };
+        }
 
         // Función para calcular el salario neto
         const calcularSalarioNeto = (salarioBruto) => {
+            // Aplica el descuento al salario bruto y devuelve el salario neto
             const descuento = calcularDescuento(salarioBruto);
             return salarioBruto * (1 - descuento);
-        };
+        }
 
         // Función para formatear moneda
-        const formatearMoneda = (cantidad) => {
+        const formatearMoneda = (cantidad) => {ç
+            // Devuelve la cantidad formateada como moneda (euros)
             return `${cantidad.toFixed(2)} €`;
-        };
+        }
 
         // Función principal que gestiona el proceso completo
         const gestionarSalarios = () => {
+            // Variable para controlar el bucle y acumular el total de salarios netos
             let continuar = true;
             let totalSalariosNetos = 0;
+            // Cogemos el div donde mostraremos los resultados
             const resultadosDiv = document.getElementById("resultados");
+            // Limpiamos el contenido previo
             resultadosDiv.innerHTML = "";
 
             while (continuar) {
@@ -106,10 +113,10 @@
             const totalElement = document.createElement("h3");
             totalElement.textContent = `Total de salarios netos abonados: ${formatearMoneda(totalSalariosNetos)}`;
             resultadosDiv.appendChild(totalElement);
-        };
+        }
 
         // Iniciar la aplicación
-        gestionarSalarios();
+        gestionarSalarios()
     </script>
 </body>
 
