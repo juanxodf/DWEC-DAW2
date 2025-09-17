@@ -1,5 +1,5 @@
 // Ejercicio 1
-function obtenerLetraDNI(dni) {
+obtenerLetraDNI = function (dni) {
     const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
     // Comprobamos que el número sea válido (entero, positivo y menor que 100 millones)
     if (typeof dni !== "number" || dni < 0 || dni > 99999999) {
@@ -11,7 +11,7 @@ function obtenerLetraDNI(dni) {
 }
 
 // Ejercicio 2
-function invertirTexto(texto) {
+invertirTexto = function (texto) {
     // Convertimos el texto en un array de caracteres
     // y lo invertimos, para despues volverlo a un string
     // con join
@@ -19,7 +19,7 @@ function invertirTexto(texto) {
 }
 
 // Ejercicio 3
-function generarNumeros() {
+generaNumeros = function () {
     // utilizamos Set para evitar duplicados
     const numeros = new Set();
 
@@ -35,7 +35,7 @@ function generarNumeros() {
 }
 
 // Ejercicio 4
-function contarLetra(frase, letra) {
+contarLetra = function (frase, letra) {
     let contador = 0;
     // Recorremos la frase y contamos las veces que aparece la letra
     for (let char of frase) {
@@ -52,7 +52,7 @@ function contarLetra(frase, letra) {
 }
 
 // Ejercicio 5
-function divisores(num) {
+divisores = function (num) {
     const resultado = [];
 
     // Recorremos los divisores

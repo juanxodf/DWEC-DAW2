@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego del PUM</title>
 </head>
+
 <body>
+    <!--
+    PUM
+    Haga una página que genere el juego del PUM hasta 100. 
+    
+    Es decir, que escriba los números separados por coma y cada vez que 
+    encuentre un número terminado en 7 o múltiplo de 7 escriba PUM y 
+    cambie de renglón.
+    -->
     <h1>Juego del PUM</h1>
     <div id="resultado"></div>
 
@@ -18,7 +28,7 @@
         // Función principal que genera la secuencia del juego PUM
         const generarPum = () => {
             let resultado = "";
-            
+
             for (let i = 1; i <= 100; i++) {
                 if (esPum(i)) {
                     resultado += "PUM<br>";
@@ -30,7 +40,7 @@
                     }
                 }
             }
-            
+
             return resultado;
         };
 
@@ -38,4 +48,5 @@
         document.getElementById("resultado").innerHTML = generarPum();
     </script>
 </body>
+
 </html>
