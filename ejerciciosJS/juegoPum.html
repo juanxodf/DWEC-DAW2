@@ -11,7 +11,7 @@
     <!--
     PUM
     Haga una página que genere el juego del PUM hasta 100. 
-    
+
     Es decir, que escriba los números separados por coma y cada vez que 
     encuentre un número terminado en 7 o múltiplo de 7 escriba PUM y 
     cambie de renglón.
@@ -21,26 +21,30 @@
 
     <script>
         // Función para determinar si un número es múltiplo de 7 o termina en 7
+        // esta función devuelve true si el número es múltiplo de 7 o termina en 7
         const esPum = (numero) => {
+            // Utilizamos el operador módulo para comprobar las condiciones
             return numero % 7 === 0 || numero % 10 === 7;
         };
 
         // Función principal que genera la secuencia del juego PUM
         const generarPum = () => {
+            // Variable para almacenar el resultado
             let resultado = "";
 
             for (let i = 1; i <= 100; i++) {
                 if (esPum(i)) {
+                    // Si es PUM, añadimos "PUM" y un salto de línea
                     resultado += "PUM<br>";
                 } else {
                     resultado += i;
-                    // Agregar coma excepto después del último número
+                    // Agregar coma excepto después del último número (!esPum(i + 1) para evitar coma antes de PUM)
                     if (i < 100 && !esPum(i + 1)) {
                         resultado += ", ";
                     }
                 }
             }
-
+            // Devolvemos la variable que contiene el resultado
             return resultado;
         };
 
